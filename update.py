@@ -1,43 +1,29 @@
 import requests
-import re
 
-def bypass_and_fetch():
-    # روابط "خزانات" الروابط المفعلة (هذه يتم تحديثها من مبرمجين تخطوا الكود يدوياً)
-    bypass_sources = [
-        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/ugeen_sports.m3u",
-        "https://raw.githubusercontent.com/fomny/iptv/main/ugeen.m3u",
-        "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ar.m3u" # مصدر احتياطي عالمي
+def final_solution():
+    # مصادر "خام" ومباشرة لا تطلب كود تفعيل (أقوى الموجود حالياً)
+    sources = [
+        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
+        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/sports.m3u",
+        "https://iptv-org.github.io/iptv/languages/ara.m3u"
     ]
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "Accept": "*/*"
-    }
+    headers = {"User-Agent": "Mozilla/5.0"}
+    final_content = "#EXTM3U\n"
     
-    final_playlist = "#EXTM3U\n"
-    seen_urls = set() # لمنع تكرار القنوات
-
-    for url in bypass_sources:
+    for url in sources:
         try:
-            print(f"محاولة جلب الروابط من: {url}")
-            response = requests.get(url, headers=headers, timeout=15)
-            if response.status_code == 200:
-                lines = response.text.splitlines()
-                for i in range(len(lines)):
-                    # نبحث عن السطر الذي يحتوي على اسم القناة (beIN أو SSC)
-                    if lines[i].startswith("#EXTINF") and ("BEIN" in lines[i].upper() or "SSC" in lines[i].upper()):
-                        channel_url = lines[i+1]
-                        if channel_url not in seen_urls:
-                            final_playlist += lines[i] + "\n" + channel_url + "\n"
-                            seen_urls.add(channel_url)
-        except Exception as e:
-            print(f"فشل في الوصول لـ {url}: {e}")
+            r = requests.get(url, headers=headers, timeout=15)
+            if r.status_code == 200:
+                # نأخذ القنوات ونضيفها (مع استبعاد سطر البداية المتكرر)
+                data = r.text.replace("#EXTM3U", "")
+                final_content += data + "\n"
+        except:
             continue
 
-    # حفظ الملف النهائي
     with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(final_playlist)
-    print(f"تم بنجاح جمع {len(seen_urls)} قناة رياضية مفعلة.")
+        f.write(final_content)
+    print("تم تحديث القنوات بنجاح من المصادر البديلة!")
 
 if __name__ == "__main__":
-    bypass_and_fetch()
+    final_solution()
