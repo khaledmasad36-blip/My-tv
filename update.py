@@ -1,30 +1,33 @@
 import requests
 
-def update_playlist():
-    # روابط مصادر قنوات موثوقة ومفتوحة (عربية وعالمية)
+def update_sports_playlist():
+    # مصادر متخصصة في القنوات الرياضية العربية والعالمية
     sources = [
-        "https://iptv-org.github.io/iptv/languages/ara.m3u", # قنوات عربية
-        "https://raw.githubusercontent.com/MoXmo/IPTV/main/Arab.m3u" # مصدر عربي إضافي
+        "https://raw.githubusercontent.com/m3uplaylist/arab/main/sports.m3u",
+        "https://raw.githubusercontent.com/shantnu/Arabic-IPTV/master/channels/sports.m3u",
+        "https://iptv-org.github.io/iptv/categories/sports.m3u"
     ]
     
     combined_content = "#EXTM3U\n"
     
     for url in sources:
         try:
-            response = requests.get(url, timeout=15)
+            # وضعنا مهلة زمنية 10 ثوانٍ لكل مصدر
+            response = requests.get(url, timeout=10)
             if response.status_code == 200:
-                # تنظيف المحتوى ودمجه
                 lines = response.text.splitlines()
+                # نتأكد أن الملف يحتوي على بيانات فعلاً
                 if len(lines) > 1:
-                    combined_content += "\n".join(lines[1:]) + "\n"
-                print(f"تم سحب القنوات من: {url}")
+                    # ندمج المحتوى مع حذف سطر البداية المتكرر
+                    combined_content += "\n".join([line for line in lines if not line.startswith("#EXTM3U")]) + "\n"
+                print(f"تم جلب قنوات رياضية من: {url}")
         except:
-            print(f"فشل سحب المصدر: {url}")
+            print(f"المصدر {url} غير متاح حالياً")
 
-    # حفظ الملف النهائي
+    # حفظ الملف النهائي في مشروعك
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(combined_content)
-    print("تم تحديث ملفك بنجاح!")
+    print("سيرفر الرياضة جاهز!")
 
 if __name__ == "__main__":
-    update_playlist()
+    update_sports_playlist()
