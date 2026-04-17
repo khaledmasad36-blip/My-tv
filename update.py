@@ -1,28 +1,37 @@
 import requests
+import re
 
-def update_final():
-    # هذا الرابط هو أقوى مصدر حالي للقنوات العربية والرياضية المحدثة
-    url = "https://raw.githubusercontent.com/MoXmo/IPTV/main/Arab.m3u"
+def update_premium_sports():
+    # أقوى مصادر حالية تحتوي على الباقات الرياضية المشفرة
+    sources = [
+        "https://raw.githubusercontent.com/MoXmo/IPTV/main/Arab.m3u",
+        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u"
+    ]
     
-    try:
-        headers = {"User-Agent": "Mozilla/5.0"}
-        response = requests.get(url, headers=headers, timeout=20)
-        
-        if response.status_code == 200 and "#EXTM3U" in response.text:
-            # حفظ الملف كما هو لضمان عمل كل القنوات
-            with open("playlist.m3u", "w", encoding="utf-8") as f:
-                f.write(response.text)
-            print("نجاح! تم سحب مئات القنوات الرياضية.")
-        else:
-            print("المصدر لم يستجب بشكل صحيح، جاري محاولة مصدر بديل...")
-            # مصدر بديل احتياطي
-            alt_url = "https://iptv-org.github.io/iptv/languages/ara.m3u"
-            response_alt = requests.get(alt_url, headers=headers, timeout=20)
-            with open("playlist.m3u", "w", encoding="utf-8") as f:
-                f.write(response_alt.text)
+    final_playlist = "#EXTM3U\n"
+    # الكلمات المفتاحية للقنوات التي تريدها
+    targets = ["BEIN", "SSC", "SAUDI SPORT", "AD SPORT"]
+    
+    headers = {"User-Agent": "Mozilla/5.0"}
+    
+    for url in sources:
+        try:
+            response = requests.get(url, headers=headers, timeout=15)
+            if response.status_code == 200:
+                lines = response.text.splitlines()
+                for i in range(len(lines)):
+                    # إذا وجدنا سطر الوصف (اللي فيه اسم القناة)
+                    if lines[i].startswith("#EXTINF"):
+                        # نتحقق هل اسم القناة يحتوي على الكلمات التي نريدها؟
+                        if any(target in lines[i].upper() for target in targets):
+                            # نضيف سطر الوصف وسطر الرابط الذي يليه مباشرة
+                            final_playlist += lines[i] + "\n" + lines[i+1] + "\n"
+        except:
+            continue
 
-    except Exception as e:
-        print(f"خطأ في الاتصال: {e}")
+    with open("playlist.m3u", "w", encoding="utf-8") as f:
+        f.write(final_playlist)
+    print("تم تجهيز باقة SSC و beIN بنجاح!")
 
 if __name__ == "__main__":
-    update_final()
+    update_premium_sports()
