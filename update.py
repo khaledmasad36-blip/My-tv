@@ -1,45 +1,40 @@
 import requests
-import re
 
-def activate_ugeen_vips():
-    # 1. محاولة جلب "التوكن" الشغال حالياً من مصدر خارجي نشط
-    try:
-        token_finder = requests.get("https://raw.githubusercontent.com/fomny/iptv/main/ugeen.m3u", timeout=10).text
-        # استخراج التوكن (الذي يأتي بعد كلمة token=)
-        match = re.search(r'token=([a-zA-Z0-9]+)', token_finder)
-        token = match.group(1) if match else "ugeen2024"
-    except:
-        token = "ugeen2024" # توكن احتياطي
-
-    # 2. قنواتك المفضلة (beIN و SSC و Alwan) من واقع ملفك اللي أرسلته
-    # لاحظ أننا نستخدم "المعرفات" الخاصة بسيرفر يوجين
-    channels = [
-        {"name": "beIN SPORTS 1 HD", "id": "3019"},
-        {"name": "beIN SPORTS 2 HD", "id": "3020"},
-        {"name": "SSC 1 HD", "id": "1331"},
-        {"name": "ALWAN Sports 1", "id": "4661"},
-        {"name": "ALWAN Sports 2", "id": "4662"}
+def final_fix_alwan_sports():
+    # مصادر بديلة قوية جداً لقنوات ألوان و beIN و SSC (تحدث كل ساعة)
+    sources = [
+        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
+        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/sports.m3u",
+        "https://raw.githubusercontent.com/fomny/iptv/main/main.m3u"
     ]
     
-    # اسم المستخدم وكلمة السر من ملفك: Ugeen_VIPtaT6Z3 / QgRQ1c
-    base_url = "http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/"
-    
+    headers = {"User-Agent": "Mozilla/5.0"}
     final_m3u = "#EXTM3U\n"
-    for ch in channels:
-        # بناء الرابط الجديد مع التوكن
-        link = f"{base_url}{ch['id']}.ts?token={token}"
-        final_m3u += f"#EXTINF:-1, {ch['name']}\n{link}\n"
-        
-    # إضافة قنوات إضافية "مفتوحة" كاحتياط لضمان عدم فراغ القائمة
-    try:
-        extra = requests.get("https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u", timeout=5).text
-        final_m3u += extra.replace("#EXTM3U", "")
-    except:
-        pass
+    
+    # الكلمات التي نبحث عنها لضمان وجود القنوات التي طلبتها
+    target_keywords = ["ALWAN", "BEIN", "SSC", "SPORTS"]
+    seen_urls = set()
+
+    for url in sources:
+        try:
+            r = requests.get(url, headers=headers, timeout=15)
+            if r.status_code == 200:
+                lines = r.text.splitlines()
+                for i in range(len(lines)):
+                    if lines[i].startswith("#EXTINF"):
+                        # فحص القناة بالاسم
+                        name_line = lines[i].upper()
+                        if any(key in name_line for key in target_keywords):
+                            link = lines[i+1].strip()
+                            if link not in seen_urls and link.startswith("http"):
+                                final_m3u += lines[i] + "\n" + link + "\n"
+                                seen_urls.add(link)
+        except:
+            continue
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(final_m3u)
-    print(f"تم التفعيل باستخدام التوكن: {token}")
+    print(f"تم بنجاح جلب {len(seen_urls)} قناة رياضية!")
 
 if __name__ == "__main__":
-    activate_ugeen_vips()
+    final_fix_alwan_sports()
