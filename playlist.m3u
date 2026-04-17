@@ -1,0 +1,12 @@
+#EXTM3U
+#EXTINF:-1, beIN SPORTS 1 HD
+http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/3019.ts?token=ugeen2024
+#EXTINF:-1, beIN SPORTS 2 HD
+http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/3020.ts?token=ugeen2024
+#EXTINF:-1, SSC 1 HD
+http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/1331.ts?token=ugeen2024
+#EXTINF:-1, ALWAN Sports 1
+http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/4661.ts?token=ugeen2024
+#EXTINF:-1, ALWAN Sports 2
+http://ugeen.live:8080/live/Ugeen_VIPtaT6Z3/QgRQ1c/4662.ts?token=ugeen2024
+404: Not Found
