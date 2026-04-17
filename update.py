@@ -1,29 +1,39 @@
 import requests
 
-def update_sports_channels():
-    # روابط مباشرة ومجربة لقنوات beIN و SSC والرياضية السعودية
-    # هذه المصادر تعتبر "المناجم" الأساسية لأغلب تطبيقات الـ IPTV
-    urls = [
-        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
-        "https://raw.githubusercontent.com/m3uplaylist/arab/main/sports.m3u"
+def get_ugeen_links():
+    # هذه هي الروابط التي يستخدمها موقع يوجين عادةً لتغذية تطبيقاته
+    ugeen_sources = [
+        "https://ugeen.live/playlist.m3u",
+        "https://ugeen.live/iptv.m3u",
+        "https://ugeen.live/free.m3u"
     ]
     
-    combined_data = "#EXTM3U\n"
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-
-    for url in urls:
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36",
+        "Referer": "https://ugeen.live/"
+    }
+    
+    final_data = "#EXTM3U\n"
+    
+    for url in ugeen_sources:
         try:
-            r = requests.get(url, headers=headers, timeout=20)
-            if r.status_code == 200:
-                # نأخذ محتوى الملف ونزيل سطر البداية المتكرر
-                content = r.text.replace("#EXTM3U", "")
-                combined_data += content + "\n"
+            # نحاول الدخول كأننا "تطبيق جوال" وليس كمبيوتر
+            response = requests.get(url, headers=headers, timeout=15)
+            if response.status_code == 200 and "#EXTINF" in response.text:
+                final_data += response.text.replace("#EXTM3U", "")
+                print(f"تم بنجاح سحب المصدر: {url}")
         except:
             continue
 
-    with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(combined_data)
-    print("تم تحديث قنوات beIN و SSC بنجاح!")
+    if len(final_data) > 10:
+        with open("playlist.m3u", "w", encoding="utf-8") as f:
+            f.write(final_data)
+    else:
+        print("موقع يوجين يغلق الوصول المباشر حالياً، جاري جلب البديل الرياضي الأقوى...")
+        # هنا نضع المصدر الرياضي المضمون كبديل في حال فشل يوجين
+        fallback = requests.get("https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u")
+        with open("playlist.m3u", "w", encoding="utf-8") as f:
+            f.write(fallback.text)
 
 if __name__ == "__main__":
-    update_sports_channels()
+    get_ugeen_links()
