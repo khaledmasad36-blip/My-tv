@@ -1,33 +1,24 @@
 import requests
 
-def update_to_direct_streams():
-    # مصادر روابط مباشرة وقوية جداً (تحدث تلقائياً من المطورين)
-    sources = [
-        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
-        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/sports.m3u"
+def manual_fix():
+    # روابطك الـ VIP مع توكن محدث
+    # ملاحظة: إذا توقفت القنوات، فقط سنغير التوكن في هذا السطر
+    token = "ugeen24" 
+    
+    content = "#EXTM3U\n"
+    channels = [
+        {"name": "beIN SPORTS 1 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/beIN_SPORTS_1_EN.m3u8"},
+        {"name": "SSC 1 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_1_HD.m3u8"},
+        {"name": "SSC 2 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_2_HD.m3u8"},
+        {"name": "SSC EXTRA 1", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_EXTRA_1_HD.m3u8"}
     ]
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-    }
+    for ch in channels:
+        content += f"#EXTINF:-1, {ch['name']}\n{ch['url']}?token={token}\n"
     
-    final_m3u = "#EXTM3U\n"
-    
-    for url in sources:
-        try:
-            print(f"جاري جلب البث من: {url}")
-            response = requests.get(url, headers=headers, timeout=15)
-            if response.status_code == 200:
-                # نأخذ محتوى الملف وننظفه
-                clean_data = response.text.replace("#EXTM3U", "")
-                final_m3u += clean_data + "\n"
-        except:
-            continue
-
-    # حفظ الملف
     with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(final_m3u)
-    print("تم تحديث القنوات بروابط مباشرة!")
+        f.write(content)
+    print("تم تثبيت روابط VIP!")
 
 if __name__ == "__main__":
-    update_to_direct_streams()
+    manual_fix()
