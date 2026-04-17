@@ -1,24 +1,45 @@
 import requests
+import re
 
-def manual_fix():
-    # روابطك الـ VIP مع توكن محدث
-    # ملاحظة: إذا توقفت القنوات، فقط سنغير التوكن في هذا السطر
-    token = "ugeen24" 
-    
-    content = "#EXTM3U\n"
-    channels = [
-        {"name": "beIN SPORTS 1 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/beIN_SPORTS_1_EN.m3u8"},
-        {"name": "SSC 1 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_1_HD.m3u8"},
-        {"name": "SSC 2 VIP", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_2_HD.m3u8"},
-        {"name": "SSC EXTRA 1", "url": "http://premium.ugeen.live:80/live/ugeen/ugeen/SSC_EXTRA_1_HD.m3u8"}
+def get_hybrid_streams():
+    # مصادر مبرمجين عرب يقومون بتحديث توكن يوجين وألوان يدوياً كل ساعة
+    # هذه الروابط هي "خلاصة" ما يتم تفعيله في المجموعات الخاصة
+    special_sources = [
+        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/ugeen_sports.m3u",
+        "https://raw.githubusercontent.com/fomny/iptv/main/main.m3u",
+        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u"
     ]
     
-    for ch in channels:
-        content += f"#EXTINF:-1, {ch['name']}\n{ch['url']}?token={token}\n"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
     
+    final_m3u = "#EXTM3U\n"
+    # كلمات البحث عن القنوات التي تهمك
+    target_channels = ["UGEEN", "ALWAN", "BEIN", "SSC", "SPORTS"]
+    
+    unique_links = set()
+
+    for url in special_sources:
+        try:
+            print(f"جاري فحص المصدر: {url}")
+            r = requests.get(url, headers=headers, timeout=15)
+            if r.status_code == 200:
+                lines = r.text.splitlines()
+                for i in range(len(lines)):
+                    if lines[i].startswith("#EXTINF"):
+                        # التأكد أن القناة رياضية أو تابعة ليوجين/ألوان
+                        if any(key in lines[i].upper() for key in target_channels):
+                            link = lines[i+1].strip()
+                            if link not in unique_links:
+                                final_m3u += lines[i] + "\n" + link + "\n"
+                                unique_links.add(link)
+        except:
+            continue
+
     with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(content)
-    print("تم تثبيت روابط VIP!")
+        f.write(final_m3u)
+    print(f"تم بنجاح تجهيز {len(unique_links)} قناة.")
 
 if __name__ == "__main__":
-    manual_fix()
+    get_hybrid_streams()
