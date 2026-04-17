@@ -1,503 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Ugeen TV</title>
-    <meta content='UgeenTV Ø§ÙØ¶Ù ÙÙÙØ¹ ÙÙØ´Ø§ÙØ¯Ø© Ø¬ÙÙØ¹ Ø§ÙÙÙÙØ§Øª ÙØ¬Ø§ÙØ§ ÙØ¹ÙÙ ÙØ¯Ø§Ø± Ø§ÙØ³Ø§Ø¹Ø©' name='description'/>
-    <meta content='download alkaicer tv, telecharger alkaicer tv, alkaicer tv apk, application alkaicer tv, installer alkaicer tv, alkaicer tv pc, alkaicer tv, gen iptv, yacin tv, alkaicer tv app, ugeen, ugeentv, ugeen app, ugeen iptv, ugeen tv, bein free, alkaicer app, alkaicer live tv, bein sports, beoutq, osn, mbc, alkass, best app, koora, yalla shot, live plus, Embratoria, Redbox tv, Show Sport tv, Kora liveØ§ÙÙÙØµØ± ØªÙÙÙ, Ø§ÙÙÙØµØ± ØªÙÙÙ Ø¨Ø« ÙØ¨Ø§Ø´Ø±, ØªØ·Ø¨ÙÙ Ø§ÙÙÙØµØ± ØªÙÙÙ, ØªØ­ÙÙÙ Ø§ÙÙÙØµØ± ØªÙ ÙÙ, ÙØ¨Ø§Ø±ÙØ§Øª Ø§ÙÙÙÙ, ÙÙÙØ§Øª ÙØ´ÙØ±Ø©, ÙÙÙØ§Øª Ø¹Ø±Ø¨ÙØ©, Ø¨Ø« ÙØ¨Ø§Ø´Ø±, Ø¨Ù Ø§Ù Ø³Ø¨ÙØ±Øª, Ø¨Ù Ø§ÙØª ÙÙÙ, ÙÙØ§ Ø´ÙØª, ÙÙØ±Ø© ÙØ§ÙÙ, ' name='keywords'/>
-    <link rel="stylesheet" href="assets/css/minified.css">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    
-    <style>
-      .modal-title, .modal-body {
-        color: #262525;
-      }
-      .modal-header .close {
-        display: none;
-      }
-    </style>
-</head>
-
-<body>
-    <div id="site-maintenance-banner" style="display:none;position:fixed;inset:0;background:rgba(7,10,20,.94);z-index:99999;padding:20px;align-items:center;justify-content:center;text-align:center;">
-      <div style="max-width:720px;background:#111827;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:32px 24px;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.45);">
-        <div style="font-size:30px;margin-bottom:14px;">ð§</div>
-        <h2 style="margin:0 0 12px;font-size:28px;color:#fff;">Ø§ÙÙÙÙØ¯ ØªØ­Øª Ø§ÙØµÙØ§ÙØ©</h2>
-        <p id="site-maintenance-text" style="margin:0;font-size:18px;line-height:1.8;color:#d1d5db;">Ø§ÙÙÙÙØ¯ ØªØ­Øª Ø§ÙØµÙØ§ÙØ© Ø­Ø§ÙÙØ§ÙØ Ø¨Ø±Ø¬Ø§Ø¡ Ø§ÙÙØ­Ø§ÙÙØ© ÙØ§Ø­ÙØ§Ù.</p>
-      </div>
-    </div>
-    <div class="reverse-gear">
-        <!--============= ScrollToTop Section Starts Here =============-->
-        <div class="preloader">
-            <div class="preloader-inner">
-                <div class="preloader-icon">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-        <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
-        <div class="overlay"></div>
-        <!--============= ScrollToTop Section Ends Here =============-->
-
-        <!--============= Header Section Starts Here =============-->
-        <header class="header-section">
-            <div class="container">
-                <div class="header-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/logo-dark-lg.png" alt="logo">
-                        </a>
-                    </div>
-                    <ul class="menu">
-                    </ul>
-                    <div class="header-right">
-                      <a href="#" class="header-button d-inline-blockk navActionDownload d-none">ØªØ­ÙÙÙ ÙÙØ¯ <i class="fas fa-download pr-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!--============= Header Section Ends Here =============-->
-
-        <!--============= Banner Section Starts Here =============-->
-
-
-        <section class="banner-14 oh bg_img pos-rel" data-background="assets/images/banner/banner-bg-14.jpg">
-            <div class="bottom-shape d-lg-block d-none">
-                <img src="assets/css/img/banner-shape-14.png" alt="banner">
-            </div>
-            <div class="container">
-                <div class="row align-items-center justify-content-between flex-wrap-reverse">
-                    <div class="col-lg-6 rtl">
-                        <a href="https://www.youtube.com/watch?v=wXPXB1P_AsQ" class="banner-video-14 popupp" target="_blank">
-                            <img src="assets/images/banner/banner-14.png" alt="banner">
-                            <div class="video-button"><i class="flaticon-play"></i></div>
-                        </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="banner-content-14 cl-white">
-                            <h5 class="cate">Ø¹Ø§ÙÙ ÙÙ Ø§ÙÙØªØ¹Ø© Ø¨ÙÙ ÙØ¯ÙÙ!
-                            </h5>
-                            <h1 class="title">UGEEN TV
-                            </h1>
-                            <span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="sponsor-slider-wrapper cl-white text-center">
-                    <span class="slider-heading">ÙÙÙÙÙ Ø§ÙØ§Ø³ØªÙØªØ§Ø¹ Ø¨Ø¬ÙÙØ¹ Ø§ÙØ¨Ø§ÙØ§Øª ÙØ¬Ø§ÙÙØ§
-                    </span>
-                    <div class="sponsor-slider-3 owl-theme owl-carousel">
-                        <div class="sponsor-thumb">
-                            <img src="https://www.citypng.com/public/uploads/small/11640818482gkvrk972vur5eqdiyfmvl5ams8sxd9kbgvxvf1kdzxhxmd41v2nzmgwb1f5wbg496mj2zs0tykiwbg8vnoxrcpidybqolycmlt9s.png" alt="sponsor">
-                        </div>
-                        <div class="sponsor-thumb">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/OSN_2020_logo.svg/1280px-OSN_2020_logo.svg.png" alt="sponsor">
-                        </div>
-                        <div class="sponsor-thumb">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Mbc1logo.png?20121212132745" alt="sponsor">
-                        </div>
-                        <div class="sponsor-thumb">
-                            <img src="https://i0.wp.com/blog.shahid.mbc.net/wp-content/uploads/2021/08/MicrosoftTeams-image-1.png?resize=453%2C143&ssl=1" alt="sponsor">
-                        </div>
-                        <div class="sponsor-thumb">
-                            <img src="https://www.adsports.ae/images/loader.gif" alt="sponsor">
-                        </div>
-                        <div class="sponsor-thumb">
-                            <img src="https://upload.wikimedia.org/wikipedia/ar/archive/4/41/20170615235609%21Art_logo.gif" alt="sponsor">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--============= Banner Section Ends Here =============-->
-<center>
-
-</script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTYH60WJYL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WTYH60WJYL');
-</script>
-
-        <!--============= Advance Feature Section Starts Here =============-->
-        <section class="advance-feature-section padding-top-2 padding-bottom-2">
-            <div class="container">
-                <div class="advance-feature-item padding-top-2 padding-bottom-2">
-                    <div class="advance-feature-thumb" style="display: flex;">
-                      <img src="assets/images/feature/advance1.png" alt="feature" style="width: 82%;margin-right: auto;margin-left: auto;">
-                    </div>
-                    <div class="advance-feature-content">
-                        <div class="section-header left-style mb-olpo">
-                            <h5 class="cate">ÙØ¯Ø§Ø¹ÙØ§ ÙÙØªÙØ·Ø¹Ø§Øª
-                                .</h5>
-                            <h2 class="title">Ø¬ÙØ¯Ø§Øª ÙØªÙÙØ¹Ø©
-                                !</h2>
-                            <p>Ø¬ÙÙØ¹ Ø§ÙØ¬ÙØ¯Ø§Øª ÙÙÙÙØ±Ø© ÙØ¯ÙÙØ§ {4K 2160p-1080p-720p-480p-360p-240p-144p} ÙØ°Ø§ ÙØ§ ØªÙÙÙ Ø ÙÙÙ ØªØ¹Ø§ÙÙ ÙÙ Ø§ÙÙØ·Ø§Ø¹ ÙÙ Ø§ÙÙØ´Ø§ÙØ¯Ø© Ø¨Ø³Ø¨Ø¨ Ø¶Ø¹Ù Ø§ÙØ§ÙØªØ±ÙØª ^^                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="advance-feature-item padding-top-2 padding-bottom-2">
-                    <div class="advance-feature-thumb" style="display: flex;">
-                      <img src="assets/images/feature/advance2.png" alt="feature" style="width: 82%;margin-right: auto;margin-left: auto;">
-                    </div>
-                    <div class="advance-feature-content">
-                        <div class="section-header left-style mb-olpo">
-                            <h5 class="cate">Ø´Ø§ÙØ¯ Ø¹Ø¨Ø± ÙÙ Ø§ÙØ§Ø¬ÙØ²Ø©
-                            </h5>
-                            <h2 class="title">Ø®Ø¯ÙØ§ØªÙØ§ ØªØ¯Ø¹Ù ÙØ®ØªÙÙ Ø§ÙØ§Ø¬ÙØ²Ø©
-                            </h2>
-                            <p>ÙÙÙÙÙ Ø§ÙØ§Ø³ØªÙØ§Ø¯Ø© ÙÙ Ø®Ø¯ÙØ§ØªÙØ§ ÙØ§ÙØ§Ø³ØªÙØªØ§Ø¹ Ø¨Ø§ÙÙØ´Ø§ÙØ¯Ø© Ø§ÙÙØ¨Ø§Ø´Ø±Ø© Ø¹ÙÙ Ø§Ù Ø¬ÙØ§Ø² Ø¨Ø§ÙØ¹Ø§ÙÙ ÙØ¯Ø¹Ù ÙØ¸Ø§Ù TV - ÙÙØ§ Ø§Ù Ø®Ø¯ÙØ§ØªÙØ§ ØªØªÙÙØ² Ø¨ÙØ¹Ø¯Ù Ø¹ÙÙ Ø«Ø§Ø¨Øª ÙØµÙ Ø§ÙÙ 99%                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="advance-feature-item padding-top-2 padding-bottom-2">
-                    <div class="advance-feature-thumb" style="display: flex;">
-                      <img src="assets/images/feature/advance3.png" alt="feature" style="width: 82%;margin-right: auto;margin-left: auto;">
-                    </div>
-                    <div class="advance-feature-content">
-                        <div class="section-header left-style mb-olpo">
-                            <h5 class="cate">ÙØ§ ØªÙÙØªÙ ÙØ¨Ø§Ø±Ø§Ø©
-                                !</h5>
-                            <h2 class="title">Ø´Ø§ÙØ¯ Ø§ÙÙÙØ§ ÙÙØª
-                            </h2>
-                            <p>ÙÙÙÙÙ Ø§Ø³ØªØ®Ø¯Ø§Ù Ø®Ø¯ÙØ§ØªÙØ§ ÙÙ Ø£Ù ÙÙØ§Ù ÙÙ ÙØ°Ø§ Ø§ÙØ¹Ø§ÙÙ. ÙØ§ ØªÙØ¬Ø¯ ÙÙÙØ¯ Ø¬ØºØ±Ø§ÙÙØ©Ø ÙÙÙÙÙ Ø¨Ø¯Ø¡ Ø§ÙÙØ´Ø§ÙØ¯Ø© ÙÙ Ø£Ù ÙÙØª ØªØ±ÙØ¯Ù Ø¹ÙÙ ÙØ¯Ø§Ø± Ø§ÙØ³Ø§Ø¹Ø© ÙØ·ÙØ§Ù Ø£ÙØ§Ù Ø§ÙØ£Ø³Ø¨ÙØ¹!                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--============= Advance Feature Section Ends Here =============-->
-<center>
-
-</script>
-
-        <!--============= Pricing Section Starts Here =============-->
-        <section class="pricing-section padding-top oh padding-bottom pb-lg-half bg_img pos-rel" data-background="./assets/images/bg/pricing-bg.jpg" id="pricing">
-            <div class="top-shape d-none d-md-block">
-                <img src="assets/css/img/top-shape.png" alt="css">
-            </div>
-            <div class="bottom-shape d-none d-md-block mw-0">
-                <img src="assets/css/img/bottom-shape.png" alt="css">
-            </div>
-            <div class="ball-2" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
-            data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="assets/images/balls/1.png" alt="balls">
-            </div>
-            <div class="ball-3" data-paroller-factor="0.30" data-paroller-factor-lg="-0.30"
-            data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="assets/images/balls/2.png" alt="balls">
-            </div>
-            <div class="ball-4" data-paroller-factor="0.30" data-paroller-factor-lg="-0.30"
-            data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="assets/images/balls/3.png" alt="balls">
-            </div>
-            <div class="ball-5" data-paroller-factor="0.30" data-paroller-factor-lg="-0.30"
-            data-paroller-type="foreground" data-paroller-direction="vertical">
-                <img src="assets/images/balls/4.png" alt="balls">
-            </div>
-            <div class="ball-6" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
-            data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="assets/images/balls/5.png" alt="balls">
-            </div>
-            <div class="ball-7" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
-            data-paroller-type="foreground" data-paroller-direction="vertical">
-                <img src="assets/images/balls/6.png" alt="balls">
-            </div>
-            <div class="container">
-                <div class="section-header cl-white">
-                    <h5 class="cate">ÙÙ Ø¨Ø§Ø¯Ø®Ø§Ù Ø±ÙØ² Ø§ÙØªÙØ¹ÙÙ
-                    </h5>
-                    <h2 class="title">ÙØªÙØªØ¹ Ø¨Ø§ÙÙØ´Ø§ÙØ¯Ø© ÙØ¬Ø§ÙØ§
-                    </h2>
-                    <p>
-                      ØªØªÙÙØ± ÙØ¯ÙÙØ§ Ø§ÙØ¹Ø¯ÙØ¯ ÙÙ Ø®Ø·Ø· Ø§ÙÙØ´Ø§ÙØ¯Ø©
-                    </p>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="pricing-item-2 mx-auto mx-md-4">
-                      <h5 class="cate">Ø§ÙØ£Ø¹ÙØ¶Ø§Ø¡</h5>
-                      <div class="thumb">
-                          <img src="assets/images/pricing/pricing4.png" alt="pricing">
-                      </div>
-                      <h2 class="title"><sup>$</sup>0</h2>
-                      <span class="info">ÙØ¬Ø§ÙØ§Ù - Ø§ÙØ£ÙØ«Ø± Ø´Ø¹Ø¨ÙØ©</span>
-                      <ul class="pricing-content-3">
-                          <li>ÙÙØ¯Ø© 24 Ø³Ø§Ø¹Ø©</li>
-                          <li>Ø¬ÙÙØ¹ Ø§ÙÙÙÙØ§Øª</li>
-                          <li>ØµÙØº ØªØ­ÙÙÙ ÙØ®ØªÙÙØ© ÙÙØªÙÙØ¹Ø©</li>
-                          <li>Ø¬ÙÙØ¹ Ø§ÙØ¨Ø§ÙØ§Øª ÙØ§ÙÙÙÙØ§Øª</li>
-                          <li>ØªØ­ÙÙ ÙØ§ÙÙ Ø¨Ø¨ÙØ§ÙØ§Øª Ø§ÙØ§ÙØ³ØªØ±ÙÙ</li>
-                          <li>Ø¯Ø¹Ù Ø¹ÙÙ ÙØ¯Ø§Ø± Ø§ÙØ³Ø§Ø¹Ø© 24/7</li>
-                      </ul>
-                      <div class="trial-button px-auto px-md-4" style="display: flex;flex-direction: column;">
-                        <a href="./signup.html" class="transparent-button" style="justify-content: space-between;">
-                          Ø­Ø³Ø§Ø¨ Ø¬Ø¯ÙØ¯ 
-                          <i class="flaticon-left ml-xl-2"></i>
-                        </a>
-                        <div style="height: 12px;"></div>
-                        <a href="./signin.html" class="transparent-button" style="justify-content: space-between;">
-                          ØªØ³Ø¬ÙÙ Ø§ÙØ¯Ø®ÙÙ 
-                          <i class="flaticon-left ml-xl-2"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="pricing-item-2 mx-auto mx-md-4">
-                      <h5 class="cate">Ø§ÙÙØ²ÙØ§Ø±</h5>
-                      <div class="thumb">
-                          <img src="assets/images/pricing/pricing1.png" alt="pricing">
-                      </div>
-                      <h2 class="title"><sup>$</sup>0</h2>
-                      <span class="info">ÙÙØ¬Ø§ÙØ§Ù</span>
-                      <ul class="pricing-content-3">
-                          <li>ÙÙØ¯Ø© 24 Ø³Ø§Ø¹Ø©</li>
-                          <li>ÙÙÙØ§Øª ÙØ­Ø¯Ø¯Ø©</li>
-                          <li>ØªØ­ÙÙÙ Ø¹Ù Ø·Ø±ÙÙ M3U ÙÙØ·</li>
-                          <li>Ø¨Ø§ÙØ§Øª ÙØ­Ø¯Ø¯Ø©</li>
-                          <li>ÙØ§ ÙÙØ¬Ø¯ ØªØ­ÙÙ Ø¨Ø¨ÙØ§ÙØ§Øª Ø§ÙØ§ÙØ³ØªØ±ÙÙ</li>
-                      </ul>
-                      <!-- <a href="#0" class="get-button">Ø§Ø®ØªØ± Ø®Ø·Ø©<i class="flaticon-left"></i></a> -->
-                      <div class="card-btn px-auto px-md-4">
-                        <form id="submit_code" autocomplete="off">
-                          <input type="text" id="code" class="form-control mb-2" placeholder="Ø£Ø¯Ø®Ù ÙÙØ¯ Ø§ÙØªÙØ¹ÙÙ ÙÙØ§"
-                            autocomplete="off" minlength="25" maxlength="25" style="font-weight: bold;font-size: 1.1rem;letter-spacing: .3px;" required>
-                          <select id="select" class="form-control form-select mb-2 d-none" style="font-weight: bold;font-size: 1.1rem;letter-spacing: .3px;"></select>
-                          <a href="#0" id="snd" class="get-button" style="display:flex; justify-content: space-between;">
-                            ØªÙÙÙØ¹ÙÙ 
-                            <i class="flaticon-left"></i>
-                          </a>
-                        </form>
-                      </div>
-                      <div class="d-none">
-                        <div id='recaptcha' class="g-recaptcha d-none" data-sitekey="6LexPvMgAAAAALN68SVJjCdXthMxNSs9Sp6Q4Pdr" data-callback="onSubmit" data-size="invisible"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </section>
-        <!--============= Pricing Section Ends Here =============-->
-
-<center>
-
-</script>
-
-        <!--============= Faq Section Starts Here =============-->
-        <section class="faq-section padding-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="faq-header">
-                            <div class="cate">
-                                <img src="assets/images/cate.png" alt="cate">
-                            </div>
-                            <h2 class="title">Ø£Ø³Ø¦ÙØ© ÙÙØ±Ø±Ø©
-                            </h2>
-                            <!-- <a href="#0">Ø§ÙÙØ²ÙØ¯ ÙÙ Ø§ÙØ£Ø³Ø¦ÙØ©
-                                <i class="flaticon-left"></i></a> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="faq-wrapper mb--38">
-                            <div class="faq-item">
-                                <div class="faq-thumb">
-                                    <i class="flaticon-pdf"></i>
-                                </div>
-                                <div class="faq-content">
-                                    <h4 class="title">ÙØ§ ÙÙ Ø®Ø¯ÙØ© UGEEN TVØ
-                                    </h4>
-                                    <p>
-                                        Ø¨Ø¨Ø³Ø§Ø·Ø© ÙÙ Ø®Ø¯ÙØ© ØªÙÙÙÙ ÙÙ ÙØ´Ø§ÙØ¯Ø© Ø§ÙØ¨Ø« Ø§ÙÙØ¶Ø§Ø¦Ù Ø¹Ø¨Ø± Ø§ÙØ§ÙØªØ±ÙØª Ø¨Ø´ÙÙ ÙØ¬Ø§ÙÙ Ø¨Ø¯ÙÙ ØµØ­Ù ÙØ§ÙØ· Ø¨Ø§ÙØ§Ø¹ØªÙØ§Ø¯ Ø¹ÙÙ Ø¨Ø±ÙØªÙÙÙÙ TV
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-thumb">
-                                    <i class="flaticon-pdf"></i>
-                                </div>
-                                <div class="faq-content">
-                                    <h4 class="title">ÙØ§ ÙÙ Ø§ÙØ¶Ù Ø®ÙØ§Ø± ÙÙÙØ´Ø§ÙØ¯Ø© Ø¹Ø¨Ø± AndroidØ</h4>
-                                    <p>
-                                        ÙÙØµØ­Ù Ø¨ØªØ­ÙÙÙ ØªØ·Ø¨ÙÙ UGEEN TV ÙØ§Ø¬ÙØ²Ø© Ø§ÙØ¯Ø±ÙÙØ¯Ø ÙØªÙØ­ ÙÙ Ø§ÙØªØ·Ø¨ÙÙ Ø§ÙÙØ§ÙÙØ© ÙØªØ§Ø¨Ø¹Ø© ÙØªØ§Ø¦Ø¬ Ø§ÙÙØ¨Ø§Ø±ÙØ§Øª ÙØ­Ø¸Ø© Ø¨ÙØ­Ø¸Ø© ÙØ§ÙÙØ´Ø§ÙØ¯Ø© Ø§ÙÙØ¨Ø§Ø´Ø±Ø© ÙØ§ÙÙ Ø§ÙØ§Ø­Ø¯Ø§Ø« Ø§ÙØ±ÙØ§Ø¶ÙØ© ÙØ§ÙØªØ±ÙÙÙÙØ©
-                                        <a href="http://alkaicer.live"> Ø§ÙÙØ± ÙÙØ§ ÙØ­ÙÙÙ Ø§ÙØ§Ù </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-thumb">
-                                    <i class="flaticon-pdf"></i>
-                                </div>
-                                <div class="faq-content">
-                                    <h4 class="title">Ø§Ø¹Ø§ÙÙ ÙÙ ØªÙØ·Ø¹Ø§Øª ÙØ³ØªÙØ±Ø©Ø ÙØ§ Ø§ÙØ­ÙØ
-                                    </h4>
-                                    <p>
-                                        ÙÙØµØ­ Ø¯Ø§Ø¦ÙØ§Ù ÙÙ Ø§ÙØ¨Ø¯Ø§ÙØ© Ø¨Ø§ÙØªØ£ÙØ¯ ÙÙ ØµØ¨ÙØ¨ Ø³Ø±Ø¹Ø© Ø§ÙØ§ÙØªØ±ÙØª Ø¹Ø¨Ø± ÙÙÙØ¹ SPEEDTEST Ø ÙÙÙ Ø­Ø§Ù ÙØ§ÙØª Ø§ÙÙØªÙØ¬Ø© Ø¹Ø§ÙÙØ© Ø ÙÙÙÙÙ Ø§ÙÙÙØ§Ù Ø¨Ø¹ÙÙÙØ© Ø§Ø¹Ø§Ø¯Ø© ØªØ´ØºÙÙ ÙÙÙÙØ¬Ù (Ø§ÙØ±Ø§ÙØªØ±) Ø§ÙØ®Ø§Øµ Ø¨ÙØ ÙØ°Ù Ø§ÙØ¹ÙÙÙØ© ØªÙÙÙ ÙÙ Ø§ÙØ­ØµÙÙ Ø¹ÙÙ Ø¹ÙÙØ§Ù IP Ø¬Ø¯ÙØ¯ ÙØ¨Ø§ÙØªØ§ÙÙ Ø¹ÙÙÙØ© ØªØ­Ø¯ÙØ« ÙÙØ§ÙØªØ±ÙØª ÙØ¯ÙÙ
-
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-thumb">
-                                    <i class="flaticon-pdf"></i>
-                                </div>
-                                <div class="faq-content">
-                                    <h4 class="title">ÙÙ Ø§ÙØªØ´ØºÙÙ ÙØªØ·ÙØ¨ Ø³Ø±Ø¹Ø© Ø¹Ø§ÙÙØ©Ø
-                                    </h4>
-                                    <p>
-                                        Ø¨Ø§ÙØ·Ø¨Ø¹ ÙØ§Ø ÙØ¹ ØªÙÙØ± Ø§ÙØ¬ÙØ¯Ø§Øª Ø§ÙÙØªÙÙØ¹Ø© ÙØ¯ÙÙØ§ ÙÙÙÙÙ Ø§ÙÙØ´Ø§ÙØ¯Ø© Ø¹ÙÙ Ø§ÙÙ Ø§ÙØ³Ø±Ø¹Ø§ØªØ ÙÙÙÙ ÙØ¶ÙØ§Ù ÙØ´Ø§ÙØ¯Ø© Ø«Ø§Ø¨ØªØ© ÙØ³ØªØ­Ø³Ù Ø§ÙØªÙÙØ± Ø¹ÙÙ ØµØ¨ÙØ¨ Ø§ÙØªØ±ÙØª ÙØ³ØªÙØ± ÙØ§ ÙÙÙ Ø¹Ù 6 ÙÙØºØ§Ø¨Ø§ÙØª Ø¨Ø§ÙØ«Ø§ÙÙØ©
-
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-thumb">
-                                    <i class="flaticon-pdf"></i>
-                                </div>
-                                <div class="faq-content">
-                                    <h4 class="title">Ø¨ÙØ§Ø°Ø§ ÙØªÙÙØ² ØªØ·Ø¨ÙÙ UGEEN TV Ø¹Ù Ø§ÙØªØ·Ø¨ÙÙØ§Øª Ø§ÙÙØ¹ØªØ§Ø¯Ø©Ø
-                                    </h4>
-                                    <p>
-                                        ÙØªÙÙØ² Ø§ÙØªØ·Ø¨ÙÙ Ø¨ÙÙØ²Ø© Ø§Ø®ØªÙØ§Ø± Ø§ÙØ¬ÙØ¯Ø© Ø¨Ø´ÙÙ Ø§ÙÙ Ø¹Ø¨Ø± Ø³ÙØ±ÙØ±Ø§Øª "ØªÙÙØ§Ø¦Ù" Ø§ÙØªÙ ØªØªØ§Ø­ Ø®ÙØ§Ù Ø§ÙÙ Ø§ÙÙØ¨Ø§Ø±ÙØ§ØªØ Ø¨Ø§ÙØªØ§ÙÙ Ø¨ÙØ§Ø¡ Ø¹ÙÙ Ø³Ø±Ø¹Ø© Ø§ÙØ§ÙØªØ±ÙØª Ø§ÙØ®Ø§ØµØ© Ø¨Ù Ø³ÙØªÙ Ø§Ø®ØªÙØ§Ø± Ø§ÙØ¶Ù Ø¬ÙØ¯Ø© ÙÙÙ ÙØ§ ØªØ¹Ø§ÙÙ ÙÙ Ø§ÙØªÙØ·Ø¹Ø§Øª
-                                        - ÙØªÙÙØ² Ø¨ÙØ¬ÙØ¯ Ø§ÙØ³Ø§Ù ÙÙØ§ÙÙØ§Ù ÙØ§ÙÙØ³ÙØ³ÙØ§Øª Ø§ÙØ¬Ø¯ÙØ¯Ø© ÙØ¨Ø¬ÙØ¯Ø§Øª ÙØªÙÙØ¹Ø© - Ø§Ø­ØµØ§Ø¦ÙØ§Øª ÙØ¨Ø§Ø´Ø±Ø© ÙÙÙØ¨Ø§Ø±ÙØ§Øª - Ø§Ø­ØªØ±Ø§ÙÙ ÙÙÙØ³Ø± ÙÙ Ø§ÙØªØ¹Ø§ÙÙ
-
-                                    </p>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--============= Faq Section Ends Here =============-->
-
-        <!--============= Trial Section Starts Here =============-->
-        <section class="trial-section padding-bottom padding-top">
-            <div class="container">
-                <div class="trial-wrapper padding-top padding-bottom pr">
-                    <div class="ball-1">
-                        <img src="assets/images/balls/balls.png" alt="balls">
-                    </div>
-                    <div class="trial-content cl-white">
-                        <h3 class="title">Ø­Ø§Ù ÙÙØª Ø§ÙØ§Ø³ØªÙØªØ§Ø¹ Ø¨Ø§ÙÙØ´Ø§ÙØ¯Ø©!</h3>
-                        <p>
-                            ÙÙ Ø¨Ø§ÙØ­ØµÙÙ Ø¹ÙÙ Ø§Ø´ØªØ±Ø§ÙÙ Ø§ÙÙØ¬Ø§ÙÙ Ø§ÙØ§Ù ÙØ§Ø³ØªÙØªØ¹ Ø¨Ø¹Ø§ÙÙ ÙÙ Ø§ÙØªØ±ÙÙÙ.
-                        </p>
-                    </div>
-                    <div class="trial-button" style="display: flex;flex-direction: column;">
-                        <a href="./signup.html" class="transparent-button">Ø­Ø³Ø§Ø¨ Ø¬Ø¯ÙØ¯ <i class="flaticon-left ml-xl-2"></i></a>
-                        <div style="height: 12px;"></div>
-                        <a href="./signin.html" class="transparent-button">ØªØ³Ø¬ÙÙ Ø§ÙØ¯Ø®ÙÙ <i class="flaticon-left ml-xl-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--============= Trial Section Ends Here =============-->
-<center>
-
-</script>
-        <!--============= Footer Section Starts Here =============-->
-        <footer class="footer-section bg_img" data-background="assets/images/footer/footer-bg.jpg">
-            <div class="container">
-                <div class="footer-top padding-top padding-bottom">
-                    <div class="logo">
-                        <a href="#0">
-                            <img src="./images/footer-logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <ul class="social-icons">
-                        <li>
-                            <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a href="#0"><i class="fab fa-twitter"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-bottom">
-                  <ul class="footer-link">
-                      <li>
-                          <a href="./index.html">Ø§ÙØ±Ø¦ÙØ³ÙØ©</a>
-                      </li>
-                      <li>
-                        <a href="./aboutus.html">ÙÙ ÙØ­Ù</a>
-                      </li>
-                      <li>
-                          <a href="./contact.html">Ø¥ØªØµÙ Ø¨ÙØ§</a>
-                      </li>
-                      <li>
-                          <a href="./privacy.html">Ø³ÙØ§Ø³Ø© Ø§ÙØ®ØµÙØµÙØ©</a>
-                      </li>
-                  </ul>
-                </div>
-                <div class="copyright">
-                    <p>
-                      ÙÙ Ø§ÙØ­ÙÙÙ ÙØ­ÙÙØ¸Ø© 2022  Â©  <a href="#0">Ugeen TV</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-
-
-        
-        <!--============= Footer Section Ends Here =============-->
-    </div>
-    <script src="assets/js/minified.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script src="./plugins/jquery/jquery.min.js"></script>
-  <script src="./plugins/bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
-  <script src="./js/socket.io.min.js"></script>
-  <script src="./assets/js/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
-    function onSubmit(token) {
-      $('#recaptcha').val(token)
-      $('#submit_code').submit()
-    }
-
-    function validate(event) {
-      event.preventDefault()
-      grecaptcha.execute()
-    }
-
-    function onload() {
-      var element = document.getElementById('snd')
-      element.onclick = validate
-    }
-
-    onload()
-  </script>
-  <script src="./js/generator.js"></script>
-<script>
-(function(){
-  function showMaintenance(message){
-    var banner = document.getElementById('site-maintenance-banner');
-    var text = document.getElementById('site-maintenance-text');
-    if(text && message) text.textContent = message;
-    if(banner) banner.style.display = 'flex';
-  }
-  fetch('http://176.123.9.60:3000/v1/admin/public')
-    .then(function(r){ return r.json(); })
-    .then(function(data){ if(data && data.MAINTENANCE_MODE === 'on'){ showMaintenance(data.MAINTENANCE_MESSAGE); }})
-    .catch(function(){});
-})();
-</script>
-</body>
-<</html>
