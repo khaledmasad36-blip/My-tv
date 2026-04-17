@@ -1,37 +1,29 @@
 import requests
-import re
 
-def update_premium_sports():
-    # أقوى مصادر حالية تحتوي على الباقات الرياضية المشفرة
-    sources = [
-        "https://raw.githubusercontent.com/MoXmo/IPTV/main/Arab.m3u",
-        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u"
+def update_sports_channels():
+    # روابط مباشرة ومجربة لقنوات beIN و SSC والرياضية السعودية
+    # هذه المصادر تعتبر "المناجم" الأساسية لأغلب تطبيقات الـ IPTV
+    urls = [
+        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
+        "https://raw.githubusercontent.com/m3uplaylist/arab/main/sports.m3u"
     ]
     
-    final_playlist = "#EXTM3U\n"
-    # الكلمات المفتاحية للقنوات التي تريدها
-    targets = ["BEIN", "SSC", "SAUDI SPORT", "AD SPORT"]
-    
-    headers = {"User-Agent": "Mozilla/5.0"}
-    
-    for url in sources:
+    combined_data = "#EXTM3U\n"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
+    for url in urls:
         try:
-            response = requests.get(url, headers=headers, timeout=15)
-            if response.status_code == 200:
-                lines = response.text.splitlines()
-                for i in range(len(lines)):
-                    # إذا وجدنا سطر الوصف (اللي فيه اسم القناة)
-                    if lines[i].startswith("#EXTINF"):
-                        # نتحقق هل اسم القناة يحتوي على الكلمات التي نريدها؟
-                        if any(target in lines[i].upper() for target in targets):
-                            # نضيف سطر الوصف وسطر الرابط الذي يليه مباشرة
-                            final_playlist += lines[i] + "\n" + lines[i+1] + "\n"
+            r = requests.get(url, headers=headers, timeout=20)
+            if r.status_code == 200:
+                # نأخذ محتوى الملف ونزيل سطر البداية المتكرر
+                content = r.text.replace("#EXTM3U", "")
+                combined_data += content + "\n"
         except:
             continue
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(final_playlist)
-    print("تم تجهيز باقة SSC و beIN بنجاح!")
+        f.write(combined_data)
+    print("تم تحديث قنوات beIN و SSC بنجاح!")
 
 if __name__ == "__main__":
-    update_premium_sports()
+    update_sports_channels()
