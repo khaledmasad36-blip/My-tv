@@ -1,39 +1,43 @@
 import requests
+import re
 
-def get_guaranteed_channels():
-    # هذه هي المصادر العالمية المعتمدة التي تعمل 100% بدون كود تفعيل
-    sources = [
-        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
-        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/sports.m3u",
-        "https://iptv-org.github.io/iptv/languages/ara.m3u"
+def ugeen_style_crawler():
+    # هذه السيرفرات هي "المناجم" التي تسحب منها المواقع روابط beIN و Alwan
+    # وهي سيرفرات Xtream مفتوحة (Public Panels)
+    panels = [
+        "http://pure-iptv.com:8080",
+        "http://1.royal-iptv.top:8080",
+        "http://line.hi-iptv.top:80"
     ]
     
-    headers = {"User-Agent": "Mozilla/5.0"}
-    final_playlist = "#EXTM3U\n"
+    # حسابات تجريبية (غالباً ما تكون شغالة ويستخدمها الموزعون)
+    user = "111"
+    pw = "111"
     
-    # الكلمات التي تهمك (ألوان، بي إن، إس إس سي)
-    keywords = ["ALWAN", "BEIN", "SSC", "SPORTS"]
-    added_links = set()
-
-    for url in sources:
+    final_playlist = "#EXTM3U\n"
+    target_channels = ["BEIN", "SSC", "ALWAN", "OSN"]
+    
+    for host in panels:
         try:
-            r = requests.get(url, headers=headers, timeout=20)
-            if r.status_code == 200:
-                lines = r.text.splitlines()
+            # محاولة جلب قائمة القنوات مباشرة من السيرفر (مثلما يفعل يوجين)
+            api_url = f"{host}/get.php?username={user}&password={pw}&type=m3u_plus&output=ts"
+            print(f"محاولة سحب القنوات من: {host}")
+            
+            response = requests.get(api_url, timeout=10)
+            if response.status_code == 200 and "#EXTM3U" in response.text:
+                lines = response.text.splitlines()
                 for i in range(len(lines)):
                     if lines[i].startswith("#EXTINF"):
-                        # فحص القناة إذا كانت رياضية أو ألوان
-                        if any(key in lines[i].upper() for key in keywords):
-                            link = lines[i+1].strip()
-                            if link not in added_links and link.startswith("http"):
-                                final_playlist += lines[i] + "\n" + link + "\n"
-                                added_links.add(link)
+                        # إذا وجدنا قناة رياضية أو ألوان
+                        if any(key in lines[i].upper() for key in target_keywords):
+                            final_playlist += lines[i] + "\n" + lines[i+1] + "\n"
+                print(f"نجح السحب من {host}!")
+                break # إذا وجدنا سيرفر شغال نتوقف
         except:
             continue
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(final_playlist)
-    print(f"تم بنجاح! وجدنا {len(added_links)} قناة شغالة 100%.")
 
 if __name__ == "__main__":
-    get_guaranteed_channels()
+    ugeen_style_crawler()
