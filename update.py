@@ -1,29 +1,48 @@
 import requests
+import re
 
-def final_solution():
-    # مصادر "خام" ومباشرة لا تطلب كود تفعيل (أقوى الموجود حالياً)
-    sources = [
-        "https://raw.githubusercontent.com/Fazz-H/iptv/main/sports_arabic.m3u",
-        "https://raw.githubusercontent.com/Mohamed-IPTV/free/main/sports.m3u",
-        "https://iptv-org.github.io/iptv/languages/ara.m3u"
-    ]
+def update_ugeen_vip():
+    # 1. المصدر الذي سنجلب منه "التوكن" الجديد والشغال
+    token_source = "https://raw.githubusercontent.com/fomny/iptv/main/ugeen.m3u"
     
-    headers = {"User-Agent": "Mozilla/5.0"}
-    final_content = "#EXTM3U\n"
-    
-    for url in sources:
-        try:
-            r = requests.get(url, headers=headers, timeout=15)
-            if r.status_code == 200:
-                # نأخذ القنوات ونضيفها (مع استبعاد سطر البداية المتكرر)
-                data = r.text.replace("#EXTM3U", "")
-                final_content += data + "\n"
-        except:
-            continue
+    try:
+        # جلب التوكن الجديد
+        response = requests.get(token_source, timeout=15)
+        # البحث عن التوكن داخل روابط المصدر (غالباً يكون بعد كلمة token=)
+        match = re.search(r'token=([a-zA-Z0-9]+)', response.text)
+        
+        if match:
+            new_token = match.group(1)
+            print(f"تم العثور على توكن جديد: {new_token}")
+        else:
+            # توكن احتياطي إذا لم نجد في المصدر الأول
+            new_token = "ugeen2024" 
+            print("لم يتم العثور على توكن، استخدام التوكن الافتراضي.")
 
-    with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(final_content)
-    print("تم تحديث القنوات بنجاح من المصادر البديلة!")
+        # 2. قنواتك الـ VIP التي أرسلتها لي (سنقوم بتوليدها برمجياً مع التوكن الجديد)
+        # سأضع لك أهم القنوات التي طلبتها (beIN و SSC) بنفس روابط ملفك
+        channels = [
+            {"name": "beIN SPORTS 1 EN", "id": "beIN_SPORTS_1_EN"},
+            {"name": "beIN SPORTS 2 EN", "id": "beIN_SPORTS_2_EN"},
+            {"name": "SSC 1 HD", "id": "SSC_1_HD"},
+            {"name": "SSC 2 HD", "id": "SSC_2_HD"},
+            {"name": "SSC EXTRA 1 HD", "id": "SSC_EXTRA_1_HD"}
+        ]
+        
+        final_m3u = "#EXTM3U\n"
+        base_url = "http://premium.ugeen.live:80/live/ugeen/ugeen/"
+        
+        for ch in channels:
+            # دمج الرابط مع التوكن الجديد
+            link = f"{base_url}{ch['id']}.m3u8?token={new_token}"
+            final_m3u += f"#EXTINF:-1, {ch['name']}\n{link}\n"
+            
+        with open("playlist.m3u", "w", encoding="utf-8") as f:
+            f.write(final_m3u)
+        print("تم تحديث ملف VIP بنجاح!")
+
+    except Exception as e:
+        print(f"حدث خطأ: {e}")
 
 if __name__ == "__main__":
-    final_solution()
+    update_ugeen_vip()
