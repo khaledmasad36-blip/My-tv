@@ -1,52 +1,53 @@
 import requests
 
-# التوكن الصافي حقك
+# التوكن حقك (تأكد إنه لسه فعال)
 TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMyODUzNCwiaWF0IjoxNzc2NTE4NTg3LCJleHAiOjE3NzY2Njg1ODcsInR5cGUiOiJhY2Nlc3MiLCJ1c2VybmFtZSI6IkhnYmIiLCJlbWFpbCI6ImtoYWxlZG1hc2FkMzZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOjEsImlwdHYiOnsidXNlciI6IlVnZWVuX1ZJUHRhVDZaMyIsInBhc3MiOiJRZ1JRMWMifX0.t7O0qKwwHB3x5piQjoNbeB6zkfbEzYXN4f9y7fc4T14"
 
 def start():
+    # الهيدرز هنا هي السر، خليتها تطابق المتصفح تماماً
     headers = {
-        'Authorization': f'Bearer {TOKEN}',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
     }
     
-    # بياناتك الاحتياطية (اللي طلعناها من التوكن) عشان نضمن ظهور الروابط
-    backup_user = "Ugeen_VIPtaV6Z3"
-    backup_pass = "QgRQM1c"
+    # بياناتك اللي سحبناها
+    user = "Ugeen_VIPtaV6Z3"
+    password = "QgRQM1c"
+    host = "http://ugeen.live:8080"
+    
+    # الرابط اللي لقيته أنت في ملف generator
+    target_url = f"{host}/get.php?username={user}&password={password}&type=m3u"
     
     try:
-        url = "http://176.123.9.60:3000/v1/users/me"
-        response = requests.get(url, headers=headers, timeout=15)
+        # بنحاول نحمل محتوى الملف الفعلي
+        response = requests.get(target_url, headers=headers, timeout=20)
         
-        if response.status_code == 200:
-            data = response.json()
-            iptv = data.get('iptv', {})
-            user = iptv.get('user') or iptv.get('username') or backup_user
-            password = iptv.get('pass') or backup_pass
-            
-            create_m3u(user, password)
-            print(f"✅ Done! Created with User: {user}")
+        if response.status_code == 200 and "#EXTM3U" in response.text:
+            # لو السيرفر أعطانا ملف M3U حقيقي، بننسخه زي ما هو
+            with open("playlist.m3u", "w", encoding="utf-8") as f:
+                f.write(response.text)
+            print("✅ تم سحب القنوات بنجاح!")
         else:
-            # لو السيرفر أعطى خطأ، لا يوقف، يستخدم الاحتياطي
-            create_m3u(backup_user, backup_pass)
-            print("⚠️ Server error, used backup data.")
+            # لو فشل في سحب الملف، بنسوي روابط "يدوية" لكن بصيغة متطورة
+            create_manual_m3u(host, user, password)
+            print("⚠️ السيرفر رفض التحميل المباشر، تم إنشاء روابط يدوية احتياطية.")
             
     except Exception as e:
-        # حتى لو فشل الاتصال تماماً، بيسوي الملف بالبيانات الاحتياطية
-        create_m3u(backup_user, backup_pass)
-        print(f"✅ Emergency backup used due to error: {e}")
+        create_manual_m3u(host, user, password)
+        print(f"❌ خطأ: {e}")
 
-def create_m3u(user, password):
-    host = "http://ugeen.live:8080"
-    # الروابط بصيغة Xtream Codes اللي يطلبها السيرفر الحين
+def create_manual_m3u(host, user, password):
+    # صيغة الـ MPEG-TS (أكثر صيغة مستقرة في السيرفرات المجانية)
     content = f"""#EXTM3U
 #EXTINF:-1, beIN SPORTS 1 HD
-{host}/live/{user}/{password}/beIN1.m3u8
+{host}/{user}/{password}/1
 #EXTINF:-1, beIN SPORTS 2 HD
-{host}/live/{user}/{password}/beIN2.m3u8
+{host}/{user}/{password}/2
 #EXTINF:-1, SSC 1 HD
-{host}/live/{user}/{password}/SSC1.m3u8
-#EXTINF:-1, FULL M3U LIST (Download)
-{host}/get.php?username={user}&password={password}&type=m3u
+{host}/{user}/{password}/3
 """
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(content)
