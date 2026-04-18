@@ -3,20 +3,26 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *'
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - set up python:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - install requests:
+
+      - name: Install dependencies
         run: pip install requests
-      - run script:
+
+      - name: Run script
         run: python run.py
-      - commit:
+
+      - name: Commit and Push
         run: |
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
