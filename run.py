@@ -1,56 +1,39 @@
 import requests
 
-# التوكن حقك (تأكد إنه لسه فعال)
-TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMyODUzNCwiaWF0IjoxNzc2NTE4NTg3LCJleHAiOjE3NzY2Njg1ODcsInR5cGUiOiJhY2Nlc3MiLCJ1c2VybmFtZSI6IkhnYmIiLCJlbWFpbCI6ImtoYWxlZG1hc2FkMzZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOjEsImlwdHYiOnsidXNlciI6IlVnZWVuX1ZJUHRhVDZaMyIsInBhc3MiOiJRZ1JRMWMifX0.t7O0qKwwHB3x5piQjoNbeB6zkfbEzYXN4f9y7fc4T14"
+# بياناتك (يجب وضعها كـ Secrets في GitHub للأمان)
+EMAIL = "khaledmasad36@gmail.com"
+PASS = "هنا_باسورد_الموقع" # الباسورد اللي تدخل فيه الموقع
+CODE = "Ugeen_VIPtaV6Z3"
 
-def start():
-    # الهيدرز هنا هي السر، خليتها تطابق المتصفح تماماً
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-        'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-    }
+def run_task():
+    session = requests.Session() # استخدام Session يحافظ على الكوكيز والتوكن آلياً
     
-    # بياناتك اللي سحبناها
-    user = "Ugeen_VIPtaV6Z3"
-    password = "QgRQM1c"
-    host = "http://ugeen.live:8080"
+    # 1. تسجيل الدخول والحصول على التوكن
+    login_data = {"email": EMAIL, "password": PASS}
+    login_res = session.post("http://176.123.9.60:3000/v1/auth/login", json=login_data)
     
-    # الرابط اللي لقيته أنت في ملف generator
-    target_url = f"{host}/get.php?username={user}&password={password}&type=m3u"
-    
-    try:
-        # بنحاول نحمل محتوى الملف الفعلي
-        response = requests.get(target_url, headers=headers, timeout=20)
+    if login_res.status_code != 200:
+        print("❌ فشل الدخول.. تأكد من بيانات الحساب")
+        return
+
+    token = login_res.json()['token']
+    session.headers.update({'Authorization': f'Bearer {token}'})
+
+    # 2. الحصول على توكن التفعيل المؤقت
+    res_temp = session.post("http://176.123.9.60:3000/v1/codes")
+    if res_temp.status_code == 200:
+        temp_token = res_temp.json()['code']['token']
         
-        if response.status_code == 200 and "#EXTM3U" in response.text:
-            # لو السيرفر أعطانا ملف M3U حقيقي، بننسخه زي ما هو
-            with open("playlist.m3u", "w", encoding="utf-8") as f:
-                f.write(response.text)
-            print("✅ تم سحب القنوات بنجاح!")
-        else:
-            # لو فشل في سحب الملف، بنسوي روابط "يدوية" لكن بصيغة متطورة
-            create_manual_m3u(host, user, password)
-            print("⚠️ السيرفر رفض التحميل المباشر، تم إنشاء روابط يدوية احتياطية.")
-            
-    except Exception as e:
-        create_manual_m3u(host, user, password)
-        print(f"❌ خطأ: {e}")
-
-def create_manual_m3u(host, user, password):
-    # صيغة الـ MPEG-TS (أكثر صيغة مستقرة في السيرفرات المجانية)
-    content = f"""#EXTM3U
-#EXTINF:-1, beIN SPORTS 1 HD
-{host}/{user}/{password}/1
-#EXTINF:-1, beIN SPORTS 2 HD
-{host}/{user}/{password}/2
-#EXTINF:-1, SSC 1 HD
-{host}/{user}/{password}/3
-"""
-    with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(content)
+        # 3. التفعيل النهائي
+        payload = {'code': CODE, 'token': temp_token, 'bouquetId': '1'}
+        res_final = session.post("http://176.123.9.60:3000/v1/subscriptions/guests", json=payload)
+        
+        if res_final.status_code in [200, 201]:
+            print("✅ تم التجديد بنجاح من سيرفر GitHub!")
+        elif res_final.status_code == 422:
+            print("ℹ️ السيرفر يقول: الاشتراك فعال حالياً.")
+    else:
+        print("❌ فشل الحصول على توكن التفعيل")
 
 if __name__ == "__main__":
-    start()
+    run_task()
