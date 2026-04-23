@@ -2,7 +2,7 @@ import requests
 
 # بياناتك (يجب وضعها كـ Secrets في GitHub للأمان)
 EMAIL = "khaledmasad36@gmail.com"
-PASS = "هنا_باسورد_الموقع" # الباسورد اللي تدخل فيه الموقع
+PASS = "sehjiw-3Ducqo-poxxen" # الباسورد اللي تدخل فيه الموقع
 CODE = "Ugeen_VIPtaV6Z3"
 
 def run_task():
